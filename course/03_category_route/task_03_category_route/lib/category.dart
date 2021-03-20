@@ -21,6 +21,7 @@ class Category extends StatelessWidget {
   final String name;
   final ColorSwatch color;
   final IconData iconLocation;
+  final String desc;
 
   /// Creates a [Category].
   ///
@@ -29,14 +30,16 @@ class Category extends StatelessWidget {
   // While the @required checks for whether a named parameter is passed in,
   // it doesn't check whether the object passed in is null. We check that
   // in the assert statement.
-  const Category({
-    Key key,
-    @required this.name,
-    @required this.color,
-    @required this.iconLocation,
-  })  : assert(name != null),
+  const Category(
+      {Key key,
+      @required this.name,
+      @required this.color,
+      @required this.iconLocation,
+      @required this.desc})
+      : assert(name != null),
         assert(color != null),
         assert(iconLocation != null),
+        assert(desc != null),
         super(key: key);
 
   /// Builds a custom widget that shows [Category] information.
@@ -77,11 +80,24 @@ class Category extends StatelessWidget {
                     size: 60.0,
                   ),
                 ),
-                Center(
-                  child: Text(
-                    name,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline,
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Text(
+                      name,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Text(
+                      desc,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
                   ),
                 ),
               ],
